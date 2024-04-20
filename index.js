@@ -15,3 +15,9 @@ app.use(cors(corsOptions));
 
 // Parse JSON request bodies
 app.use(express.json());
+
+// Serve static files from the "images" directory
+app.use(express.static("public/images"));
+
+// Serve static files from the 'videos' directory
+app.use(express.static("public/videos"));
