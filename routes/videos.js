@@ -7,6 +7,8 @@ const app = express();
 const cors = require("cors");
 const { v4: uuidv4 } = require("uuid"); 
 
+// Defines paths for video and image storage
+const videosPath = path.join(__dirname, "..", "data", "videos.json");
 const imagesPath = path.join(__dirname, "..", "public", "images");
 
 // File filter for image uploads - only allows image file types (additional backend validation)
