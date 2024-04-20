@@ -57,6 +57,7 @@ const getVideos = () => {
 const saveVideos = (videos) => {
     try {
         fs.writeFileSync(videosPath, JSON.stringify(videos, null, 2), "utf8");
+        console.log("File written successfully");  // Log success message
     } catch (err) {
         console.error("Error writing file:", err);
     }
@@ -255,6 +256,25 @@ router.put("/:videoId/likes", (req, res) => {
     } else {
         res.status(404).send({ error: "Video not found" });
     }
+});
+
+// PUT endpoint to increment the like count for a comment on a video
+router.put("/:videoId/comments/:commentId/likes", (req, res) => {
+    const videos = getVideos();
+    const video = videos.find(v => v.id === req.params.videoId);
+    if (!video) {
+        return res.status(404).json({ error: "Video not found" });
+    }
+
+    const comment = video.comments.find(c => c.id === req.params.commentId);
+    if (!comment) {
+        return res.status(404).json({ error: "Comment not found" });
+    }
+
+    comment.likes = (comment.likes || 0) + 1; 
+    saveVideos(videos); // Save the updated array to your JSON file
+
+    res.status(200).json({ likes: comment.likes }); 
 });
 
 // DELETE a comment from a video
