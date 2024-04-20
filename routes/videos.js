@@ -42,6 +42,26 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage, fileFilter: imageFileFilter });
 
+// Helper functions to read videos data from JSON file
+const getVideos = () => {
+    try {
+        const data = fs.readFileSync(videosPath, "utf8");
+        return JSON.parse(data);
+    } catch (err) {
+        console.error("Error reading file:", err);
+        return [];
+    }
+};
+
+// Helper function to save videos data to JSON file
+const saveVideos = (videos) => {
+    try {
+        fs.writeFileSync(videosPath, JSON.stringify(videos, null, 2), "utf8");
+    } catch (err) {
+        console.error("Error writing file:", err);
+    }
+};
+
 // Enables static file serving and CORS
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
