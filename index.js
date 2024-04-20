@@ -21,3 +21,11 @@ app.use(express.static("public/images"));
 
 // Serve static files from the 'videos' directory
 app.use(express.static("public/videos"));
+
+// Mount the videos router at the '/videos' path
+app.use("/videos", videosRouter);
+
+// Error handling middleware
+app.use((req, res, next) => {
+    res.status(404).send("Sorry can't find that!");
+});
