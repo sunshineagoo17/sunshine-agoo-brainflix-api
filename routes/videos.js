@@ -165,14 +165,14 @@ const predefinedNames = [
 ];
 
 const predefinedComments = [
-    "Every time I watch him skate, it's like he's defying gravity. Makes me want to grab my own board and hit the ramps. He's seriously skilled!",
-    "Her guitar skills are off the charts! Watching her play lights a fire in me to practice more. One day, I'll jam out like that at my own gig!",
-    "His drawing sessions are a joy to watch. It’s amazing how he brings characters to life. I’m dusting off my sketchpad right now—inspired to create!",
-    "Seeing her solve those complex math problems so smoothly is just wow. I’m motivated to crack open my textbooks and ace my exams like she does!",
-    "Every dive he makes looks so perfect and effortless. Watching him really makes me want to improve my own diving skills. Summer can't come soon enough!",
-    "The way she edits her videos is pure art. Makes me want to learn video editing just to see if I can capture magic like that on my own projects.",
-    "His cooking tutorials make gourmet dishes seem so accessible. I'm motivated to try those recipes this weekend. Who knows, I might be a hidden chef!",
-    "Watching her fitness routine is so motivating. Her strength and flexibility are goals! Time to get off the couch and into the gym. Maybe I'll be as fit as her one day!"
+    "Incredible! He's so skilled. The clarity and depth of the content make it easy to understand and engage with. Really looking forward to more videos like this one.",
+    "This was exceptionally enlightening! The enthusiasm not only kept me hooked but also greatly enhanced my understanding of the topic. Can't wait to watch more!",
+    "What a fantastic video! This was sooo cool to watch. It helped illustrate the concepts perfectly. This has sparked a real interest in learning more about the subject.",
+    "Superbly done! Every minute of this video was worth watching. It's packed with insightful information and practical advice that I can actually use.",
+    "Exciting stuff! I was thoroughly impressed by how you got me hooked to my screen. Summer can't come soon enough. Great work with this video! Keep making great content!",
+    "This video is a treasure trove of knowledge! It's not just informative but also incredibly motivating. It's videos like these that inspire lifelong creativity.",
+    "Absolutely loved the visuals in this video! They were not only beautiful but really helped in reinforcing this amazing subject. Wow! I'm absolutely in awe of those shots. Great job!",
+    "I was glued to my seat this whole time. Truly an excellent resource for anyone looking to dive into this world. Those engaging shots kept me at the edge of my seat."
 ];
 
 // Shuffle the arrays once
@@ -190,7 +190,7 @@ const generateRandomComments = (count) => {
             id: uuidv4(),
             name: shuffledNames[lastUsedNameIndex], 
             comment: shuffledComments[lastUsedCommentIndex],
-            likes: Math.floor(Math.random() * 50),
+            likes: Math.floor(Math.random() * 10),
             timestamp: Date.now() - i * 1000 
         };
 
