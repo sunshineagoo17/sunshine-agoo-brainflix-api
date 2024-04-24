@@ -296,4 +296,20 @@ router.delete("/:videoId/comments/:commentId", (req, res) => {
     }
 });
 
+// PUT endpoint to increment the view count for a video
+router.put("/:videoId/views", (req, res) => {
+    const videos = getVideos();
+    const videoIndex = videos.findIndex(v => v.id === req.params.videoId);
+    if (videoIndex !== -1) {
+        // Parse the views count from string to number, increment it, and convert it back to string
+        let currentViews = parseInt(videos[videoIndex].views.replace(/,/g, "")) + 1;
+        currentViews = currentViews.toLocaleString();
+        videos[videoIndex].views = currentViews;
+        saveVideos(videos); 
+        res.status(200).json(videos[videoIndex]); // Send the updated video object with the views count in the response
+    } else {
+        res.status(404).send({ error: "Video not found" });
+    }
+});
+
 module.exports = router;
