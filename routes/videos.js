@@ -89,7 +89,7 @@ router.post("/", upload.single("posterImage"), async (req, res) => {
         const duration = "4:01";
 
         // Generate random comments
-        const comments = generateRandomComments(2);
+        const comments = generateRandomComments(3);
 
         // Add video data to videos array
         const newVideo = {
@@ -111,7 +111,7 @@ router.post("/", upload.single("posterImage"), async (req, res) => {
 
         saveVideos(videos);
 
-        res.status(201).json({ message: "Image uploaded successfully", imagePath: imagePath });
+        res.status(201).json({ message: "Image uploaded successfully", videoId: newVideo.id, imagePath: imagePath });
     } catch (error) {
         console.error("Error handling the uploaded image:", error);
         res.status(500).json({ error: "Error processing the uploaded image" });
