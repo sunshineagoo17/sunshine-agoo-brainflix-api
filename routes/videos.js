@@ -3,8 +3,6 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
-const app = express();
-const cors = require("cors");
 const { v4: uuidv4 } = require("uuid"); 
 
 // Defines paths for video and image storage
@@ -19,7 +17,7 @@ const imageFileFilter = (req, file, cb) => {
     cb(null, true);
 };
 
-// Cronfigure multer for image storage management
+// Configure multer for image storage management
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, imagesPath);  
@@ -57,15 +55,11 @@ const getVideos = () => {
 const saveVideos = (videos) => {
     try {
         fs.writeFileSync(videosPath, JSON.stringify(videos, null, 2), "utf8");
-        console.log("File written successfully");  // Log success message
+        console.log("File written successfully");  
     } catch (err) {
         console.error("Error writing file:", err);
     }
 };
-
-// Enables static file serving and CORS
-app.use(express.static(path.join(__dirname, "public")));
-app.use(cors());
 
 // Routes
 router.post("/", upload.single("posterImage"), async (req, res) => {
