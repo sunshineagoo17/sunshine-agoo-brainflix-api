@@ -18,10 +18,10 @@ app.use(express.json());
 // Serve static files from the "images" directory
 app.use(express.static("public/images"));
 
-// Serve static files from the 'videos' directory
+// Serve static files from the "videos" directory
 app.use(express.static("public/videos"));
 
-// Mount the videos router at the '/videos' path
+// Mount the videos router at the "/videos" path
 app.use("/videos", videosRouter);
 
 // Catch 404 errors for unmatched routes
