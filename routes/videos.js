@@ -40,7 +40,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage, fileFilter: imageFileFilter });
 
-// Helper functions to read videos data from JSON file
+// Helper function to read videos data from JSON file
 const getVideos = () => {
     try {
         const data = fs.readFileSync(videosPath, "utf8");
